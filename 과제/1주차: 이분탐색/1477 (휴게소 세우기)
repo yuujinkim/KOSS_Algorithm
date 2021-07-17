@@ -1,0 +1,23 @@
+N, M, L = map(int, input().split())
+rest_area = list(map(int, input().split()))
+rest_area.append(0)
+rest_area.append(L)
+rest_area.sort()
+
+start = 0
+end = L
+
+while start <= end:
+    count = 0
+    mid = (start+end)//2
+    for i in range(1, len(rest_area)):
+        if rest_area[i]-rest_area[i-1] > mid:
+            count += (rest_area[i]-rest_area[i-1]-1)//mid
+
+    if count <= M:
+        answer = mid
+        end = mid-1
+    else:
+        start = mid+1
+
+print(answer)
