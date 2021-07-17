@@ -1,0 +1,23 @@
+N = int(input())
+budget_list = list(map(int, input().split()))
+M = int(input())
+
+start = 0
+end = max(budget_list)
+
+while start <= end:
+    total = 0
+    mid = (start+end)//2
+    for i in budget_list:
+        if i > mid:
+            total += mid
+        else:
+            total += i
+
+    if total <= M:
+        answer = mid
+        start = mid+1
+    else:
+        end = mid-1
+
+print(answer)
